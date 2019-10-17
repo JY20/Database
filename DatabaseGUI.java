@@ -26,8 +26,7 @@ public class DatabaseGUI {
     public static void main(String[] args) throws IOException {
 
         database.setup();
-        // database.addRow(questions2);
-        // database.getRow(1);
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
 
@@ -38,7 +37,6 @@ public class DatabaseGUI {
                 frame.setVisible(true);
             }
         });
-
     }
 
     public static void say(String x) {
@@ -48,32 +46,4 @@ public class DatabaseGUI {
     public static void say(int x) {
         System.out.println(x);
     }
-
-    /*
-     * public static void Copy(String ID, BufferedReader x) throws IOException {
-     * String teS = x.readLine(); String id = teS.substring(0, idSize); String PrS =
-     * ""; while (teS != null) { PrS = teS; id = PrS.substring(0, idSize); if
-     * (!id.equals(ID)) { OtherLines.add(PrS); } else { ChangeLine = PrS; } teS =
-     * x.readLine(); } x.close(); }
-     * 
-     * public static void parts(BufferedReader x) throws IOException { String teS =
-     * ChangeLine; String PrS = ""; while (teS != null) { PrS = teS; int lineSize =
-     * PrS.length() - idSize; int WP = 0; String teteS = ""; for (int i = 0; i <
-     * lineSize; i++) { teS = PrS.substring(idSize + i, idSize + (i + 1)); if
-     * (teS.equals(",")) { OLineParts[WP] = teteS; OriginalParts[WP] = teteS; WP++;
-     * teteS = ""; } else { teteS += teS; } } teS = null; } }
-     * 
-     * public static void ChangeInfo(String id, String[] x) throws IOException {
-     * Copy(id, Br); parts(Br); String teS = ""; for (int i = 0; i <
-     * OriginalParts.length; i++) { say(OriginalParts[i]); } for (int i = 0; i <
-     * x.length; i++) { if (!OLineParts[i].equals(x[i])) { OLineParts[i] = x[i]; } }
-     * teS += id; for (int i = 0; i < OLineParts.length; i++) { teS += OLineParts[i]
-     * + ","; } OtherLines.add(teS);
-     * 
-     * fw = new FileWriter("Database", false); Bw = new BufferedWriter(fw);
-     * 
-     * Bw.write(OtherLines.get(0)); for (int i = 1; i < OtherLines.size(); i++) {
-     * Bw.write("\n" + OtherLines.get(i)); } Bw.close(); }
-     */
-
 }

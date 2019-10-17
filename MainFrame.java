@@ -25,9 +25,17 @@ public class MainFrame extends JFrame {
         buttonUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                updateFrame.setSize(500, 400);
-                updateFrame.setLocationRelativeTo(null);
-                updateFrame.setVisible(true);
+                // try {
+                int option = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter your ID"));
+
+                if (option <= DatabaseGUI.database.largestID && option > 0) {
+                    updateFrame.setSize(500, 400);
+                    updateFrame.setLocationRelativeTo(null);
+                    updateFrame.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "ERROR, ID does not exist");
+                }
+
             }
         });
 

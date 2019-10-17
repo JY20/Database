@@ -8,8 +8,9 @@ import java.io.IOException;
 public class Database {
 
     static ArrayList<String>[] database;
+
     String[] columnTitles;
-    int largestID = 1;
+    int largestID = 0;
 
     public Database(String[] _columnTitles) {
         columnTitles = _columnTitles;
@@ -34,7 +35,8 @@ public class Database {
             String line;
             while ((line = reader.readLine()) != null) {
                 rawInputToArray(line);
-                System.out.println(line);
+                largestID++;
+                // System.out.println(line);
             }
 
         } catch (IOException e) {
@@ -61,6 +63,7 @@ public class Database {
                 database[i].add(data[i]);
             }
         }
+        largestID++;
     }
 
     public void updateRow(int id, String[] data) {
