@@ -76,9 +76,11 @@ public class Database {
         }
     }
 
-    public void print() {
+    public String[] getRow(int id) {
+        String[] out = new String[database.length];
         for (int i = 0; i < database.length; i++) {
-            System.out.println();
+            out[i] = database[i].get(id);
         }
+        return out;
     }
 }

@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class MainFrame extends JFrame {
     public static JFrame addFrame = new AddFrame("Add Data");
-    public static JFrame updateFrame = new UpdateFrame("Update Data");
+    public static UpdateFrame updateFrame = new UpdateFrame("Update Data");
 
     public MainFrame(String title) {
         super(title);
@@ -25,24 +25,23 @@ public class MainFrame extends JFrame {
         buttonUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // try {
                 int option = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter your ID"));
 
                 if (option <= DatabaseGUI.database.largestID && option > 0) {
-                    updateFrame.setSize(500, 400);
+                    updateFrame.updateLabels(option);
+                    updateFrame.setSize(600, 500);
                     updateFrame.setLocationRelativeTo(null);
                     updateFrame.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "ERROR, ID does not exist");
                 }
-
             }
         });
 
         buttonAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addFrame.setSize(500, 400);
+                addFrame.setSize(600, 500);
                 addFrame.setLocationRelativeTo(null);
                 addFrame.setVisible(true);
             }
