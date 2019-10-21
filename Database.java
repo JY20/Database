@@ -11,6 +11,7 @@ public class Database {
 
     String[] columnTitles;
     int largestID = 0;
+    int lastID = 0;
 
     public Database(String[] _columnTitles) {
         columnTitles = _columnTitles;
@@ -82,5 +83,27 @@ public class Database {
             out[i] = database[i].get(id);
         }
         return out;
+    }
+
+    public String getRowString(int id) {
+        String out = "";
+        for (int i = 0; i < getRow(id).length; i++) {
+            out += getRow(id) + ",";
+        }
+        return out;
+    }
+
+    public String getStringID(int id) {
+        String output = "";
+
+        String out = "" + id;
+
+        int digits = 5 - out.length();
+        for (int i = 0; i < digits; i++) {
+            output += "0";
+        }
+        output += out;
+        ///output += ",";
+        return output;
     }
 }

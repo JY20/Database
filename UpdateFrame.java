@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.FileReader;
+//import static DatabaseGUI;
+import java.io.FileOutputStream;
 
 public class UpdateFrame extends JFrame {
 
@@ -55,23 +57,26 @@ public class UpdateFrame extends JFrame {
         buttonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean badData = false;
+                // boolean badData = false;
                 for (int i = 0; i < DatabaseGUI.newInfo.length; i++) {
-                    if (inputs[i].getText().contains(",")) {
-                        badData = true;
-                    } else {
-                        DatabaseGUI.newInfo[i] = inputs[i].getText();
-                    }
+                    // if (inputs[i].getText().contains(",")) {
+                    // badData = true;
+                    // } else {
+                    DatabaseGUI.newInfo[i] = inputs[i].getText();
                 }
-                if (!badData) {
-                    try {
-                        DatabaseGUI.database.addRow(DatabaseGUI.newInfo);
-                        setInfo(DatabaseGUI.newInfo);
-                    } catch (IOException io) {
-                        io.printStackTrace();
-                    }
-                    MainFrame.addFrame.setVisible(false);
-                }
+                // }
+                // if (!badData) {
+                // try {
+                DatabaseGUI.database.addRow(DatabaseGUI.newInfo);
+                int tempID = DatabaseGUI.database.lastID;
+                replaceSelected(DatabaseGUI.database.getStringID(tempID), DatabaseGUI.database.getRowString(tempID));
+                // setInfo(DatabaseGUI.newInfo);
+                // } catch (IOException io) {
+                // io.printStackTrace();
+                /// } finally {
+                MainFrame.addFrame.setVisible(false);
+                // }
+                // }
             }
         });
 
@@ -102,6 +107,44 @@ public class UpdateFrame extends JFrame {
 
         for (int i = 0; i < originalLabels.length; i++) {
             originalLabels[i].setText(originalData[i + 1]);
+        }
+    }
+
+
+    // getStringID / getRowString
+    public static void replaceSelected(String replaceWith, String type) {
+        try {
+            // input the file content to the StringBuffer "input"
+            BufferedReader file = new BufferedReader(new FileReader("DatabaseGUI\\Database"));
+            StringBuffer inputBuffer = new StringBuffer();
+            String line;
+
+            while ((line = file.readLine()) != null) {
+                inputBuffer.append(line);
+                inputBuffer.append('\n');
+            }
+            file.close();
+            String inputStr = inputBuffer.toString();
+
+            System.out.println(inputStr); // display the original file for debugging
+
+            // logic to replace lines in the string (could use regex here to be generic)
+           // if (type.equals(type)) {
+                inputStr = inputStr.replace(replaceWith + "", replaceWith + type);
+            //} else if (type.equals("1")) {
+             //   inputStr = inputStr.replace(replaceWith + "0", replaceWith + "1");
+            //}
+
+            // display the new file for debugging
+            System.out.println("----------------------------------\n" + inputStr);
+
+            // write the new string with the replaced line OVER the same file
+            FileOutputStream fileOut = new FileOutputStream("DatabaseGUI\\Database");
+            fileOut.write(inputStr.getBytes());
+            fileOut.close();
+
+        } catch (Exception e) {
+            System.out.println("Problem reading file.");
         }
     }
 }

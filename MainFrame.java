@@ -1,6 +1,7 @@
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
+import java.lang.Throwable;
 
 public class MainFrame extends JFrame {
     public static JFrame addFrame = new AddFrame("Add Data");
@@ -25,16 +26,22 @@ public class MainFrame extends JFrame {
         buttonUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // try {
                 int option = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter your ID"));
-
                 if (option <= DatabaseGUI.database.largestID && option > 0) {
                     updateFrame.updateLabels(option);
                     updateFrame.setSize(600, 500);
                     updateFrame.setLocationRelativeTo(null);
                     updateFrame.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "ERROR, ID does not exist");
-                }
+                    DatabaseGUI.database.lastID = option;
+                } // else {
+                  // Exception g = new Exception();
+                  // Exception.Throwable(g);
+                  // }
+                // } catch (Exception f) {
+                // JOptionPane.showMessageDialog(null, "ERROR, ID does not exist");
+                // }
+
             }
         });
 
