@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.FileReader;
-//import static DatabaseGUI;
 import java.io.FileOutputStream;
 
 public class UpdateFrame extends JFrame {
@@ -69,7 +68,9 @@ public class UpdateFrame extends JFrame {
                 // try {
                 DatabaseGUI.database.addRow(DatabaseGUI.newInfo);
                 int tempID = DatabaseGUI.database.lastID;
-                replaceSelected(DatabaseGUI.database.getStringID(tempID), DatabaseGUI.database.getRowString(tempID));
+                // replaceSelected(DatabaseGUI.database.getStringID(tempID),
+                // DatabaseGUI.database.getRowString(tempID));
+                replaceLines(DatabaseGUI.database.getStringID(tempID), DatabaseGUI.database.getRowString(tempID));
                 // setInfo(DatabaseGUI.newInfo);
                 // } catch (IOException io) {
                 // io.printStackTrace();
@@ -95,11 +96,6 @@ public class UpdateFrame extends JFrame {
         fw = new FileWriter("DatabaseGUI\\Database", true);
         Bw = new BufferedWriter(fw);
 
-        /*
-         * String output = ""; ID = id(Br); output += String.format("%0" + idSize + "d",
-         * (ID + 1)) + ","; for (int i = 0; i < input.length; i++) { output += input[i]
-         * + ","; } Bw.write(output + "\n"); if (Bw != null) { Bw.close(); }
-         */
     }
 
     public void updateLabels(int option) {
@@ -110,37 +106,43 @@ public class UpdateFrame extends JFrame {
         }
     }
 
+    public void replaceLine(String beginning, String replaceWith) {
+        try {
+            BufferedReader file = new BufferedReader(new FileReader("DatabaseGUI\\Database"));
+            String line;
+            while ((line = file.readLine()) != null) {
+                if (line.startsWith(beginning)) {
+
+                }
+                // inputBuffer.append(line);
+                // inputBuffer.append('\n');
+            }
+        } catch (Exception e) {
+
+        }
+    }
 
     // getStringID / getRowString
-    public static void replaceSelected(String replaceWith, String type) {
+    public static void replaceLines(String ID, String replaced) {
         try {
-            // input the file content to the StringBuffer "input"
+            // input the (modified) file content to the StringBuffer "input"
             BufferedReader file = new BufferedReader(new FileReader("DatabaseGUI\\Database"));
             StringBuffer inputBuffer = new StringBuffer();
             String line;
 
             while ((line = file.readLine()) != null) {
-                inputBuffer.append(line);
-                inputBuffer.append('\n');
+                if (line.startsWith(ID)) {
+                    line = replaced; // replace the line here
+
+                    inputBuffer.append(line);
+                    inputBuffer.append('\n');
+                    System.out.println(line);
+                }
             }
             file.close();
-            String inputStr = inputBuffer.toString();
-
-            System.out.println(inputStr); // display the original file for debugging
-
-            // logic to replace lines in the string (could use regex here to be generic)
-           // if (type.equals(type)) {
-                inputStr = inputStr.replace(replaceWith + "", replaceWith + type);
-            //} else if (type.equals("1")) {
-             //   inputStr = inputStr.replace(replaceWith + "0", replaceWith + "1");
-            //}
-
-            // display the new file for debugging
-            System.out.println("----------------------------------\n" + inputStr);
-
             // write the new string with the replaced line OVER the same file
             FileOutputStream fileOut = new FileOutputStream("DatabaseGUI\\Database");
-            fileOut.write(inputStr.getBytes());
+            fileOut.write(inputBuffer.toString().getBytes());
             fileOut.close();
 
         } catch (Exception e) {

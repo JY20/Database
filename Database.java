@@ -87,8 +87,9 @@ public class Database {
 
     public String getRowString(int id) {
         String out = "";
-        for (int i = 0; i < getRow(id).length; i++) {
-            out += getRow(id) + ",";
+        String[] arr = getRow(id);
+        for (int i = 0; i < database.length; i++) {
+            out += arr[i] + ",";
         }
         return out;
     }
@@ -103,7 +104,7 @@ public class Database {
             output += "0";
         }
         output += out;
-        ///output += ",";
+        /// output += ",";
         return output;
     }
 }
