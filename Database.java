@@ -89,7 +89,10 @@ public class Database {
         String out = "";
         String[] arr = getRow(id);
         for (int i = 0; i < database.length; i++) {
-            out += arr[i] + ",";
+            out += arr[i];
+            if (!(i == database.length - 1)) {
+                out += ",";
+            }
         }
         return out;
     }

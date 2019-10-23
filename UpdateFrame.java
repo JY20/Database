@@ -58,26 +58,16 @@ public class UpdateFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // boolean badData = false;
                 for (int i = 0; i < DatabaseGUI.newInfo.length; i++) {
-                    // if (inputs[i].getText().contains(",")) {
-                    // badData = true;
-                    // } else {
                     DatabaseGUI.newInfo[i] = inputs[i].getText();
                 }
-                // }
-                // if (!badData) {
-                // try {
-                DatabaseGUI.database.addRow(DatabaseGUI.newInfo);
                 int tempID = DatabaseGUI.database.lastID;
+                DatabaseGUI.database.updateRow(tempID, DatabaseGUI.newInfo);
+
                 // replaceSelected(DatabaseGUI.database.getStringID(tempID),
                 // DatabaseGUI.database.getRowString(tempID));
                 replaceLines(DatabaseGUI.database.getStringID(tempID), DatabaseGUI.database.getRowString(tempID));
                 // setInfo(DatabaseGUI.newInfo);
-                // } catch (IOException io) {
-                // io.printStackTrace();
-                /// } finally {
                 MainFrame.addFrame.setVisible(false);
-                // }
-                // }
             }
         });
 
@@ -106,22 +96,6 @@ public class UpdateFrame extends JFrame {
         }
     }
 
-    public void replaceLine(String beginning, String replaceWith) {
-        try {
-            BufferedReader file = new BufferedReader(new FileReader("DatabaseGUI\\Database"));
-            String line;
-            while ((line = file.readLine()) != null) {
-                if (line.startsWith(beginning)) {
-
-                }
-                // inputBuffer.append(line);
-                // inputBuffer.append('\n');
-            }
-        } catch (Exception e) {
-
-        }
-    }
-
     // getStringID / getRowString
     public static void replaceLines(String ID, String replaced) {
         try {
@@ -129,14 +103,23 @@ public class UpdateFrame extends JFrame {
             BufferedReader file = new BufferedReader(new FileReader("DatabaseGUI\\Database"));
             StringBuffer inputBuffer = new StringBuffer();
             String line;
-
+            int counter = 1;
             while ((line = file.readLine()) != null) {
                 if (line.startsWith(ID)) {
-                    line = replaced; // replace the line here
+
+                    line = ID + "," + replaced; // replace the line here
 
                     inputBuffer.append(line);
                     inputBuffer.append('\n');
                     System.out.println(line);
+                    counter++;
+                } else {
+                    line = DatabaseGUI.database.getRowString(counter) + ","; // replace the line here
+
+                    inputBuffer.append(line);
+                    inputBuffer.append('\n');
+                    System.out.println(line);
+                    counter++;
                 }
             }
             file.close();
