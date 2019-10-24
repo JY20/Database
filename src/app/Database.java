@@ -1,3 +1,5 @@
+package app;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedReader;
@@ -30,7 +32,7 @@ public class Database {
         BufferedReader reader = null;
 
         try {
-            File file = new File("DatabaseGUI\\Database");
+            File file = new File("Database");
             reader = new BufferedReader(new FileReader(file));
 
             String line;
