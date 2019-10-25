@@ -69,7 +69,9 @@ public class AddFrame extends JFrame {
                     }
                     MainFrame.addFrame.setVisible(false);
                     DatabaseGUI.frame.setVisible(true);
-                }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Input not Valid");
+                } 
             }
         });
         buttonBack.addActionListener(new ActionListener() {

@@ -34,9 +34,12 @@ public class MainFrame extends JFrame {
         buttonUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                // try {
-                int option = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter your ID"));
+                int option = 0;
+                try {
+                    option = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter your ID"));
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Input not valid");
+                }
                 if (option <= DatabaseGUI.database.largestID && option > 0) {
                     DatabaseGUI.frame.setVisible(false);
                     updateFrame.updateLabels(option);
@@ -58,5 +61,9 @@ public class MainFrame extends JFrame {
                 addFrame.setVisible(true);
             }
         });
+    }
+
+    public static boolean badData() {
+        return true;
     }
 }

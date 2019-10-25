@@ -71,10 +71,8 @@ public class UpdateFrame extends JFrame {
                 int tempID = DatabaseGUI.database.lastID;
                 DatabaseGUI.database.updateRow(tempID, DatabaseGUI.newInfo);
 
-                // replaceSelected(DatabaseGUI.database.getStringID(tempID),
-                // DatabaseGUI.database.getRowString(tempID));
                 replaceLines(DatabaseGUI.database.getStringID(tempID), DatabaseGUI.database.getRowString(tempID));
-                // setInfo(DatabaseGUI.newInfo);
+
                 MainFrame.updateFrame.setVisible(false);
                 DatabaseGUI.frame.setVisible(true);
             }
