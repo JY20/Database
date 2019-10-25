@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class MainFrame extends JFrame {
+    private static final long serialVersionUID = 1L;
+
     public static JFrame addFrame = new AddFrame("Add Data");
     public static UpdateFrame updateFrame = new UpdateFrame("Update Data");
 
@@ -32,28 +34,25 @@ public class MainFrame extends JFrame {
         buttonUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 // try {
                 int option = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter your ID"));
                 if (option <= DatabaseGUI.database.largestID && option > 0) {
+                    DatabaseGUI.frame.setVisible(false);
                     updateFrame.updateLabels(option);
                     updateFrame.setSize(600, 500);
                     updateFrame.setLocationRelativeTo(null);
                     updateFrame.setVisible(true);
                     DatabaseGUI.database.lastID = option;
-                } // else {
-                  // Exception g = new Exception();
-                  // Exception.Throwable(g);
-                  // }
-                // } catch (Exception f) {
-                // JOptionPane.showMessageDialog(null, "ERROR, ID does not exist");
-                // }
-
+                }
             }
         });
 
         buttonAdd.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
+                DatabaseGUI.frame.setVisible(false);
                 addFrame.setSize(600, 500);
                 addFrame.setLocationRelativeTo(null);
                 addFrame.setVisible(true);

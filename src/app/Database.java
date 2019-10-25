@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Database {
 
-    static ArrayList<String>[] database;
+    private ArrayList<String>[] database;
 
     String[] columnTitles;
     int largestID = 0;
@@ -37,8 +37,7 @@ public class Database {
             String line;
             while ((line = reader.readLine()) != null) {
                 rawInputToArray(line);
-                largestID++;
-                // System.out.println(line);
+                // largestID++;
             }
 
         } catch (IOException e) {
@@ -53,28 +52,23 @@ public class Database {
     }
 
     public void rawInputToArray(String row) {
+        row = row.substring(6);
         String[] values = row.split(",");
         addRow(values);
     }
 
     public void addRow(String[] data) {
-        for (int i = 0; i < database.length; i++) {
-            if (i >= data.length) {
-                database[i].add("");
-            } else {
-                database[i].add(data[i]);
-            }
+        database[0].add(getStringID(largestID + 1));
+        for (int i = 1; i < database.length; i++) {
+            database[i].add(data[i - 1]); // Add Data
         }
         largestID++;
     }
 
     public void updateRow(int id, String[] data) {
-        for (int i = 0; i < database.length; i++) {
-            if (i >= data.length) {
-                database[i].set(id, "");
-            } else {
-                database[i].set(id, data[i]);
-            }
+        database[0].set(id, getStringID(id));
+        for (int i = 1; i < database.length; i++) {
+            database[i].set(id, data[i - 1]);
         }
     }
 
@@ -108,7 +102,6 @@ public class Database {
             output += "0";
         }
         output += out;
-        /// output += ",";
         return output;
     }
 }

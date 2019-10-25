@@ -10,6 +10,8 @@ import java.io.FileWriter;
 import java.io.FileReader;
 
 public class AddFrame extends JFrame {
+    private static final long serialVersionUID = 1L;
+
     static String[] input = new String[] { "", "", "", "", "", "", "" }; // new information
 
     static int ID = 0;
@@ -28,11 +30,11 @@ public class AddFrame extends JFrame {
         // Create swing components
         JButton buttonSubmit = new JButton("Submit");
         JButton buttonBack = new JButton("Back");
-        JLabel[] labels = new JLabel[DatabaseGUI.questions.length];
-        JTextField[] inputs = new JTextField[DatabaseGUI.questions.length];
+        JLabel[] labels = new JLabel[DatabaseGUI.questions2.length-1];
+        JTextField[] inputs = new JTextField[DatabaseGUI.questions2.length-1];
 
         for (int i = 0; i < labels.length; i++) {
-            labels[i] = new JLabel(DatabaseGUI.questions[i], SwingConstants.CENTER);
+            labels[i] = new JLabel(DatabaseGUI.questions2[i+1], SwingConstants.CENTER);
             inputs[i] = new JTextField("h");
         }
 
@@ -66,6 +68,7 @@ public class AddFrame extends JFrame {
                         io.printStackTrace();
                     }
                     MainFrame.addFrame.setVisible(false);
+                    DatabaseGUI.frame.setVisible(true);
                 }
             }
         });
@@ -73,6 +76,7 @@ public class AddFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainFrame.addFrame.setVisible(false);
+                DatabaseGUI.frame.setVisible(true);
             }
         });
     }

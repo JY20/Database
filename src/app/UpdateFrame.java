@@ -12,13 +12,15 @@ import java.io.FileOutputStream;
 
 public class UpdateFrame extends JFrame {
 
+    private static final long serialVersionUID = 1L;
+
     static String[] originalData = new String[] { "", "", "", "", "", "", "" }; // Each seperate value in old row
     static JLabel[] originalLabels = new JLabel[7];
     static FileWriter fw;
     static FileReader fr;
     static BufferedWriter Bw;
     static BufferedReader Br;
-    
+
     public UpdateFrame(String title) {
         super(title);
 
@@ -38,7 +40,7 @@ public class UpdateFrame extends JFrame {
         JTextField[] inputs = new JTextField[7];
 
         for (int i = 0; i < 7; i++) {
-            labels[i] = new JLabel(DatabaseGUI.questions[i], SwingConstants.CENTER);
+            labels[i] = new JLabel(DatabaseGUI.questions2[i + 1], SwingConstants.CENTER);
             originalLabels[i] = new JLabel(originalData[i], SwingConstants.CENTER);
             inputs[i] = new JTextField();
         }
@@ -73,7 +75,8 @@ public class UpdateFrame extends JFrame {
                 // DatabaseGUI.database.getRowString(tempID));
                 replaceLines(DatabaseGUI.database.getStringID(tempID), DatabaseGUI.database.getRowString(tempID));
                 // setInfo(DatabaseGUI.newInfo);
-                MainFrame.addFrame.setVisible(false);
+                MainFrame.updateFrame.setVisible(false);
+                DatabaseGUI.frame.setVisible(true);
             }
         });
 
@@ -81,6 +84,7 @@ public class UpdateFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainFrame.updateFrame.setVisible(false);
+                DatabaseGUI.frame.setVisible(true);
             }
         });
 
@@ -113,7 +117,7 @@ public class UpdateFrame extends JFrame {
             while ((line = file.readLine()) != null) {
                 if (line.startsWith(ID)) {
 
-                    line = ID + "," + replaced; // replace the line here
+                    line = replaced + ","; // replace the line here
 
                     inputBuffer.append(line);
                     inputBuffer.append('\n');
