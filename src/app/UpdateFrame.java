@@ -16,6 +16,7 @@ public class UpdateFrame extends JFrame {
 
     static String[] originalData = new String[] { "", "", "", "", "", "", "" }; // Each seperate value in old row
     static JLabel[] originalLabels = new JLabel[7];
+    static JTextField[] inputs = new JTextField[7];
     static FileWriter fw;
     static FileReader fr;
     static BufferedWriter Bw;
@@ -37,7 +38,6 @@ public class UpdateFrame extends JFrame {
                 new JLabel("New Info", SwingConstants.CENTER) };
 
         JLabel[] labels = new JLabel[7];
-        JTextField[] inputs = new JTextField[7];
 
         for (int i = 0; i < 7; i++) {
             labels[i] = new JLabel(DatabaseGUI.questions2[i + 1], SwingConstants.CENTER);
@@ -111,6 +111,7 @@ public class UpdateFrame extends JFrame {
 
         for (int i = 0; i < originalLabels.length; i++) {
             originalLabels[i].setText(originalData[i + 1]);
+            inputs[i].setText(originalData[i + 1]);
         }
     }
 
