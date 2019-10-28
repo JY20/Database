@@ -35,7 +35,7 @@ public class AddFrame extends JFrame {
 
         for (int i = 0; i < labels.length; i++) {
             labels[i] = new JLabel(DatabaseGUI.questions2[i+1], SwingConstants.CENTER);
-            inputs[i] = new JTextField("h");
+            inputs[i] = new JTextField();
         }
 
         // Add swing components to content pane
