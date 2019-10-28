@@ -23,6 +23,7 @@ public class MainFrame extends JFrame {
         // Create swing components
         JButton buttonUpdate = new JButton("Update Data");
         JButton buttonAdd = new JButton("Add Data");
+        // JButton buttonDelete = new JButton("Delete Entry");
 
         // Add swing components to content pane
         Container c = getContentPane();
@@ -37,6 +38,9 @@ public class MainFrame extends JFrame {
                 int option = 0;
                 try {
                     option = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter your ID"));
+                    if (option <= 0 || option > DatabaseGUI.database.largestID) {
+                        throw new IllegalArgumentException();
+                    }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Input not valid");
                 }
