@@ -64,17 +64,27 @@ public class UpdateFrame extends JFrame {
         buttonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 // boolean badData = false;
-                for (int i = 0; i < DatabaseGUI.newInfo.length; i++) {
-                    DatabaseGUI.newInfo[i] = inputs[i].getText();
+                try {
+                    for (int i = 0; i < DatabaseGUI.newInfo.length; i++) {
+                        if (inputs[i].getText().contains(",")) {
+                            throw new IllegalArgumentException();
+                        }
+                        DatabaseGUI.newInfo[i] = inputs[i].getText();
+
+                        int tempID = DatabaseGUI.database.lastID;
+                        DatabaseGUI.database.updateRow(tempID, DatabaseGUI.newInfo);
+
+                        replaceLines(DatabaseGUI.database.getStringID(tempID),
+                                DatabaseGUI.database.getRowString(tempID));
+
+                        MainFrame.updateFrame.setVisible(false);
+                        DatabaseGUI.frame.setVisible(true);
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Input not valid");
                 }
-                int tempID = DatabaseGUI.database.lastID;
-                DatabaseGUI.database.updateRow(tempID, DatabaseGUI.newInfo);
-
-                replaceLines(DatabaseGUI.database.getStringID(tempID), DatabaseGUI.database.getRowString(tempID));
-
-                MainFrame.updateFrame.setVisible(false);
-                DatabaseGUI.frame.setVisible(true);
             }
         });
 
