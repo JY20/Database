@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public class MainFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 
-    public static JFrame addFrame = new AddFrame("Add Data");
+    public static AddFrame addFrame = new AddFrame("Add Data");
     public static UpdateFrame updateFrame = new UpdateFrame("Update Data");
 
     public MainFrame(String title) {
@@ -60,6 +60,7 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DatabaseGUI.frame.setVisible(false);
+                addFrame.updateInputs();
                 addFrame.setSize(600, 500);
                 addFrame.setLocationRelativeTo(null);
                 addFrame.setVisible(true);
@@ -67,7 +68,4 @@ public class MainFrame extends JFrame {
         });
     }
 
-    public static boolean badData() {
-        return true;
-    }
 }

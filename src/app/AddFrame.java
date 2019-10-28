@@ -10,9 +10,11 @@ import java.io.FileWriter;
 import java.io.FileReader;
 
 public class AddFrame extends JFrame {
+    
     private static final long serialVersionUID = 1L;
 
     static String[] input = new String[] { "", "", "", "", "", "", "" }; // new information
+    static JTextField[] inputs = new JTextField[DatabaseGUI.questions2.length - 1];
 
     static int ID = 0;
     static int idSize = 5;
@@ -30,11 +32,10 @@ public class AddFrame extends JFrame {
         // Create swing components
         JButton buttonSubmit = new JButton("Submit");
         JButton buttonBack = new JButton("Back");
-        JLabel[] labels = new JLabel[DatabaseGUI.questions2.length-1];
-        JTextField[] inputs = new JTextField[DatabaseGUI.questions2.length-1];
+        JLabel[] labels = new JLabel[DatabaseGUI.questions2.length - 1];
 
         for (int i = 0; i < labels.length; i++) {
-            labels[i] = new JLabel(DatabaseGUI.questions2[i+1], SwingConstants.CENTER);
+            labels[i] = new JLabel(DatabaseGUI.questions2[i + 1], SwingConstants.CENTER);
             inputs[i] = new JTextField();
         }
 
@@ -71,7 +72,7 @@ public class AddFrame extends JFrame {
                     DatabaseGUI.frame.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Input not Valid");
-                } 
+                }
             }
         });
         buttonBack.addActionListener(new ActionListener() {
@@ -116,4 +117,9 @@ public class AddFrame extends JFrame {
         return id;
     }
 
+    public void updateInputs() {
+    //    for (int i = 0; i < inputs.length; i++) {
+      //      inputs[i].setText("");
+        //}
+    }
 }

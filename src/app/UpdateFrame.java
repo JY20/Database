@@ -95,7 +95,6 @@ public class UpdateFrame extends JFrame {
                 DatabaseGUI.frame.setVisible(true);
             }
         });
-
     }
 
     public void setInfo(int row, String[] input) throws IOException {
