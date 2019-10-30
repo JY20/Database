@@ -17,6 +17,7 @@ public class UpdateFrame extends JFrame {
     static String[] originalData = new String[] { "", "", "", "", "", "", "" }; // Each seperate value in old row
     static JLabel[] originalLabels = new JLabel[7];
     static JTextField[] inputs = new JTextField[7];
+    
     static FileWriter fw;
     static FileReader fr;
     static BufferedWriter Bw;
