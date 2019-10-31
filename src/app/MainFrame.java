@@ -35,15 +35,24 @@ public class MainFrame extends JFrame {
         buttonUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int option = 0;
+                int option = -999;
+
                 try {
+                    // Open a input dialog and store the ID inputted to 'option'.
                     option = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter your ID"));
-                    if (option <= 0 || option > DatabaseGUI.database.largestID) {
-                        throw new IllegalArgumentException();
+                    try {
+                        if (option == -999) {
+                            throw new Exception();
+                        } else if (option <= 0 || option > DatabaseGUI.database.largestID) {
+                            throw new IllegalArgumentException();
+                        }
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Input not valid");
                     }
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Input not valid");
+                    // The user pressed the cancel button
                 }
+
                 if (option <= DatabaseGUI.database.largestID && option > 0) {
                     DatabaseGUI.frame.setVisible(false);
                     updateFrame.updateLabels(option);

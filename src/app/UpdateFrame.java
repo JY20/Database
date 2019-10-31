@@ -17,7 +17,7 @@ public class UpdateFrame extends JFrame {
     static String[] originalData = new String[] { "", "", "", "", "", "", "" }; // Each seperate value in old row
     static JLabel[] originalLabels = new JLabel[7];
     static JTextField[] inputs = new JTextField[7];
-    
+
     static FileWriter fw;
     static FileReader fr;
     static BufferedWriter Bw;
@@ -41,7 +41,7 @@ public class UpdateFrame extends JFrame {
         JLabel[] labels = new JLabel[7];
 
         for (int i = 0; i < 7; i++) {
-            labels[i] = new JLabel(DatabaseGUI.questions2[i + 1], SwingConstants.CENTER);
+            labels[i] = new JLabel(DatabaseGUI.questions[i + 1], SwingConstants.CENTER);
             originalLabels[i] = new JLabel(originalData[i], SwingConstants.CENTER);
             inputs[i] = new JTextField();
         }
@@ -66,10 +66,9 @@ public class UpdateFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                // boolean badData = false;
                 try {
                     for (int i = 0; i < DatabaseGUI.newInfo.length; i++) {
-                        if (inputs[i].getText().contains(",")) {
+                        if (inputs[i].getText().contains(",") || inputs[i].getText().equals("")) {
                             throw new IllegalArgumentException();
                         }
                         DatabaseGUI.newInfo[i] = inputs[i].getText();

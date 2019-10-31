@@ -92,6 +92,11 @@ public class Database {
         return out;
     }
 
+    public ArrayList<String>[] getDatabase() {
+        ArrayList<String>[] databaseTemp = database;
+        return databaseTemp;
+    }
+
     public String getStringID(int id) {
         String output = "";
 

@@ -10,14 +10,16 @@ import java.io.FileWriter;
 import java.io.FileReader;
 
 public class AddFrame extends JFrame {
-    
+
     private static final long serialVersionUID = 1L;
 
     static String[] input = new String[] { "", "", "", "", "", "", "" }; // new information
-    static JTextField[] inputs = new JTextField[DatabaseGUI.questions2.length - 1];
+    static JTextField[] inputs = new JTextField[DatabaseGUI.questions.length - 1];
 
     static int ID = 0;
     static int idSize = 5;
+
+    // File Reading and writing
     static FileWriter fw;
     static FileReader fr;
     static BufferedWriter Bw;
@@ -26,16 +28,16 @@ public class AddFrame extends JFrame {
     public AddFrame(String title) {
         super(title);
         // Set Layout manager
-
         GridLayout grid = new GridLayout(8, 2, 30, 10);
         setLayout(grid);
+
         // Create swing components
         JButton buttonSubmit = new JButton("Submit");
         JButton buttonBack = new JButton("Back");
-        JLabel[] labels = new JLabel[DatabaseGUI.questions2.length - 1];
+        JLabel[] labels = new JLabel[DatabaseGUI.questions.length - 1];
 
         for (int i = 0; i < labels.length; i++) {
-            labels[i] = new JLabel(DatabaseGUI.questions2[i + 1], SwingConstants.CENTER);
+            labels[i] = new JLabel(DatabaseGUI.questions[i + 1], SwingConstants.CENTER);
             inputs[i] = new JTextField();
         }
 
@@ -55,7 +57,7 @@ public class AddFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 boolean badData = false;
                 for (int i = 0; i < DatabaseGUI.newInfo.length; i++) {
-                    if (inputs[i].getText().contains(",")) {
+                    if (inputs[i].getText().contains(",") || inputs[i].getText().equals("")) {
                         badData = true;
                     } else {
                         DatabaseGUI.newInfo[i] = inputs[i].getText();
@@ -118,8 +120,8 @@ public class AddFrame extends JFrame {
     }
 
     public void updateInputs() {
-    //    for (int i = 0; i < inputs.length; i++) {
-      //      inputs[i].setText("");
-        //}
+        for (int i = 0; i < inputs.length; i++) {
+            inputs[i].setText("");
+        }
     }
 }
