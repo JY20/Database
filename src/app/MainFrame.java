@@ -14,6 +14,7 @@ public class MainFrame extends JFrame {
 
     public static AddFrame addFrame = new AddFrame("Add Data");
     public static UpdateFrame updateFrame = new UpdateFrame("Update Data");
+    public static ViewFrame viewFrame = new ViewFrame("View Data");
 
     public MainFrame(String title) {
         super(title);
@@ -23,6 +24,7 @@ public class MainFrame extends JFrame {
         // Create swing components
         JButton buttonUpdate = new JButton("Update Data");
         JButton buttonAdd = new JButton("Add Data");
+        JButton buttonView = new JButton("View Data");
         // JButton buttonDelete = new JButton("Delete Entry");
 
         // Add swing components to content pane
@@ -30,7 +32,7 @@ public class MainFrame extends JFrame {
 
         c.add(buttonUpdate);
         c.add(buttonAdd);
-
+        c.add(buttonView);
         // Add Behaviour
         buttonUpdate.addActionListener(new ActionListener() {
             @Override
@@ -73,6 +75,17 @@ public class MainFrame extends JFrame {
                 addFrame.setSize(600, 500);
                 addFrame.setLocationRelativeTo(null);
                 addFrame.setVisible(true);
+            }
+        });
+        
+        buttonView.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DatabaseGUI.frame.setVisible(false);
+                viewFrame.setSize(600, 500);
+                viewFrame.setLocationRelativeTo(null);
+                viewFrame.setVisible(true);
             }
         });
     }
