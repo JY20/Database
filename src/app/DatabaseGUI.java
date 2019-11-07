@@ -19,11 +19,10 @@ public class DatabaseGUI {
 
     static Database database = new Database(questions);
     static JFrame frame = new MainFrame("Database");
-    
+
     public static void main(String[] args) throws IOException {
 
         database.setup();
-       // System.out.println("dff");
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
 
