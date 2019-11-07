@@ -23,7 +23,6 @@ public class DatabaseGUI {
     public static void main(String[] args) throws IOException {
 
         database.setup();
-       // System.out.println("dff");
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
 
