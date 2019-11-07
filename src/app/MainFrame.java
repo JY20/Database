@@ -29,6 +29,7 @@ public class MainFrame extends JFrame {
 
         // Add swing components to content pane
         Container c = getContentPane();
+        //GridLayout button
 
         c.add(buttonUpdate);
         c.add(buttonAdd);
