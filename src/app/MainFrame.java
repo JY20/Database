@@ -2,6 +2,7 @@ package app;
 
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,10 +30,13 @@ public class MainFrame extends JFrame {
 
         // Add swing components to content pane
         Container c = getContentPane();
-        //GridLayout button
-
+        GridLayout buttonlayout = new GridLayout (3, 1, 10, 10);
+        c.setLayout(buttonlayout);
+        buttonUpdate.setFont(buttonUpdate.getFont ().deriveFont (35.0f));
         c.add(buttonUpdate);
+        buttonAdd.setFont(buttonAdd.getFont ().deriveFont (35.0f));
         c.add(buttonAdd);
+        buttonView.setFont(buttonView.getFont ().deriveFont (35.0f));
         c.add(buttonView);
         // Add Behaviour
         buttonUpdate.addActionListener(new ActionListener() {
