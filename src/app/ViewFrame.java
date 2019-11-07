@@ -16,34 +16,33 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class ViewFrame extends JFrame{
+public class ViewFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-
+	
 	public ViewFrame (String title) {
 		super(title);
 		JPanel panelInfo = new JPanel();
 		JButton buttonBack = new JButton("Back");
-		JButton buttonNextP= new JButton("Next");
-		JButton buttonPreviousP= new JButton("Previous");
 		int size = 10;
+		int page = 1;
 		ArrayList <String>dataAll = new ArrayList<>();
 		String[] data = new String []{"ID", "Name", "Age", "Period 1", "Period 2", "Period 3", "Period 4", "Period 5", ""};
 		JLabel[][] dataL = new JLabel[size][8];
 		JLabel [] L = null;
-		int page = 1;
 		try {
-		FileReader viewR = new FileReader("Database");
-		BufferedReader viewFile = new BufferedReader(viewR);
-		String temps = viewFile.readLine();
-		while(temps != null) {
-			dataAll.add(temps);
-			temps = viewFile.readLine();
+			FileReader viewR = new FileReader("Database");
+			BufferedReader viewFile = new BufferedReader(viewR);
+			String temps = viewFile.readLine();
+			while(temps != null) {
+				dataAll.add(temps);
+				temps = viewFile.readLine();
+			}
+			viewR.close();
+		} catch(IOException io) {		
 		}
-		viewR.close();
-		} catch(IOException io) {
-			
-		}
+	
+		
 	    GridLayout viewgrid = new GridLayout(size+2, 8, 10, 1);
 	    panelInfo.setLayout(viewgrid);
 	    Container c = getContentPane();
@@ -63,17 +62,12 @@ public class ViewFrame extends JFrame{
 	    for (int i = 0; i < 8; i++) {
 	    	if(i == 1) {
 	    		panelInfo.add(buttonBack);
-	    	} else if (i == 5) {
-	    		panelInfo.add(buttonPreviousP);
-	    	} else if (i == 6) {
-	    		panelInfo.add(buttonNextP);
 	    	}else {
 	    		dataL[0][0] = new JLabel("",SwingConstants.CENTER);
 	    		panelInfo.add(dataL[0][0]);
 	    	}
 	    }
 	    c.add(panelInfo);
-		
 		buttonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,19 +75,6 @@ public class ViewFrame extends JFrame{
                 DatabaseGUI.frame.setVisible(true);
             }
         });
-		buttonNextP.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainFrame.viewFrame.setVisible(false);
-                DatabaseGUI.frame.setVisible(true);
-            }
-        });
-		buttonPreviousP.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainFrame.viewFrame.setVisible(false);
-                DatabaseGUI.frame.setVisible(true);
-            }
-        });
 	}
+
 }
