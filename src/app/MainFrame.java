@@ -42,15 +42,22 @@ public class MainFrame extends JFrame {
         buttonUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int option = -999;
+                String inputID;
+                int inputIDInt = 0;
 
                 try {
                     // Open a input dialog and store the ID inputted to 'option'.
-                    option = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter your ID"));
+                    inputID = JOptionPane.showInputDialog(null, "Enter your ID");
+                    
+                   
                     try {
-                        if (option == -999) {
+                        if (inputID.contains("/[a-zA-Z]/")) {
                             throw new Exception();
-                        } else if (option <= 0 || option > DatabaseGUI.database.largestID) {
+                        }
+                        inputIDInt = Integer.parseInt(inputID);
+                        if (inputIDInt == -999) {
+                            throw new Exception();
+                        } else if (inputIDInt <= 0 || inputIDInt > DatabaseGUI.database.largestID) {
                             throw new IllegalArgumentException();
                         }
                     } catch (Exception ex) {
@@ -60,13 +67,13 @@ public class MainFrame extends JFrame {
                     // The user pressed the cancel button
                 }
 
-                if (option <= DatabaseGUI.database.largestID && option > 0) {
+                if (inputIDInt <= DatabaseGUI.database.largestID && inputIDInt > 0) {
                     DatabaseGUI.frame.setVisible(false);
-                    updateFrame.updateLabels(option);
+                    updateFrame.updateLabels(inputIDInt);
                     updateFrame.setSize(600, 500);
                     updateFrame.setLocationRelativeTo(null);
                     updateFrame.setVisible(true);
-                    DatabaseGUI.database.lastID = option;
+                    DatabaseGUI.database.lastID = inputIDInt;
                 }
             }
         });

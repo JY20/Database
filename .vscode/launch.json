@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - DatabaseGUI",
+            "request": "launch",
+            "mainClass": "app.DatabaseGUI",
+            "projectName": "DatabaseGUI"
+        },
+        {
+            "type": "java",
             "name": "Debug (Attach)",
             "request": "launch",
             "mainClass": "DatabaseGUI",
@@ -23,6 +30,6 @@
             "request": "launch",
             "mainClass": "DatabaseGUI",
             "projectName": "DatabaseGUI"
-        },
+        }
     ]
 }
