@@ -18,29 +18,26 @@ import javax.swing.SwingConstants;
 public class ViewFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-	static JPanel panelInfo = new JPanel();
 	static JButton buttonBack = new JButton("Back");
-	static ArrayList <String>dataAll = new ArrayList<>();
+	static ArrayList <String>dataAll;
 	static String[] data = new String []{"ID", "Name", "Age", "Period 1", "Period 2", "Period 3", "Period 4", "Period 5"};
-	static JLabel[][] dataL; 
-    static JScrollPane sTextArea;
-    static Container c;
+    public static Container c = new Container();
+    public static JPanel panelInfo = new JPanel();
+    static JPanel tempP = new JPanel();
     
 	public ViewFrame (String title) {
 		super(title);
-		
 		c = getContentPane();
-		refresh();
-		buttonBack.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainFrame.viewFrame.setVisible(false);
-                DatabaseGUI.frame.setVisible(true);
-            }
-        });
 	}
 	
-	public static void refresh() {
+	public void refresh() {
+		panelInfo = new JPanel();
+		buttonBack = new JButton("Back");
+		dataAll = new ArrayList<>();
+		JLabel[][] dataL; 
+		JScrollPane sTextArea;
+		c = new Container();
+		c = getContentPane();
 		try {
 			FileReader viewR = new FileReader("Database");
 			BufferedReader viewFile = new BufferedReader(viewR);
@@ -77,5 +74,13 @@ public class ViewFrame extends JFrame {
 	    sTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         sTextArea.setColumnHeaderView(buttonBack);
 	    c.add(sTextArea);
+	    
+		buttonBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainFrame.viewFrame.setVisible(false);
+                DatabaseGUI.frame.setVisible(true);
+            }
+        });
 	}
 }

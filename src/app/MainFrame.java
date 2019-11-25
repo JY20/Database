@@ -98,6 +98,7 @@ public class MainFrame extends JFrame {
                 viewFrame.setSize(600, 500);
                 viewFrame.setLocationRelativeTo(null);
                 viewFrame.setVisible(true);
+               viewFrame.refresh();
             }
         });
     }
