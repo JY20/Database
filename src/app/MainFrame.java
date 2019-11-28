@@ -30,13 +30,13 @@ public class MainFrame extends JFrame {
 
         // Add swing components to content pane
         Container c = getContentPane();
-        GridLayout buttonlayout = new GridLayout (3, 1, 10, 10);
+        GridLayout buttonlayout = new GridLayout(3, 1, 10, 10);
         c.setLayout(buttonlayout);
-        buttonUpdate.setFont(buttonUpdate.getFont ().deriveFont (35.0f));
+        buttonUpdate.setFont(buttonUpdate.getFont().deriveFont(35.0f));
         c.add(buttonUpdate);
-        buttonAdd.setFont(buttonAdd.getFont ().deriveFont (35.0f));
+        buttonAdd.setFont(buttonAdd.getFont().deriveFont(35.0f));
         c.add(buttonAdd);
-        buttonView.setFont(buttonView.getFont ().deriveFont (35.0f));
+        buttonView.setFont(buttonView.getFont().deriveFont(35.0f));
         c.add(buttonView);
         // Add Behaviour
         buttonUpdate.addActionListener(new ActionListener() {
@@ -48,8 +48,7 @@ public class MainFrame extends JFrame {
                 try {
                     // Open a input dialog and store the ID inputted to 'option'.
                     inputID = JOptionPane.showInputDialog(null, "Enter your ID");
-                    
-                   
+
                     try {
                         if (inputID.contains("/[a-zA-Z]/")) {
                             throw new Exception();
@@ -89,12 +88,14 @@ public class MainFrame extends JFrame {
                 addFrame.setVisible(true);
             }
         });
-        
+
         buttonView.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 DatabaseGUI.frame.setVisible(false);
+                viewFrame = new ViewFrame("View Data");
+
                 viewFrame.setSize(600, 500);
                 viewFrame.setLocationRelativeTo(null);
                 viewFrame.setVisible(true);
