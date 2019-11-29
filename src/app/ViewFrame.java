@@ -1,5 +1,6 @@
 package app;
 
+// Import Libraries
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -18,12 +19,11 @@ import javax.swing.SwingConstants;
 public class ViewFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	static JButton buttonBack = new JButton("Back");
-	static ArrayList<String> dataAll;
-	static String[] data;
+	static JButton buttonBack = new JButton("Back");// The back button
+	static ArrayList<String> dataAll;// All the data from the text file
+	static String[] data; // The 
 	public static Container c = new Container();
-	public static JPanel panelInfo = new JPanel();
-	static JPanel tempP = new JPanel();
+	public static JPanel panelInfo = new JPanel(); // Panel for the data or information 
 
 	public ViewFrame(String title) {
 		super(title);
