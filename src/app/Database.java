@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Database {
 
-    private ArrayList<String>[] database;
+    private ArrayList<String>[] database; // uses an array of arraylist to hold database values
 
     String[] columnTitles;
     int largestID = 0;
@@ -37,7 +37,6 @@ public class Database {
             String line;
             while ((line = reader.readLine()) != null) {
                 rawInputToArray(line);
-                // largestID++;
             }
 
         } catch (IOException e) {
@@ -51,13 +50,13 @@ public class Database {
         }
     }
 
-    public void rawInputToArray(String row) {
+    public void rawInputToArray(String row) { // Reads data and adds it to array
         row = row.substring(6);
         String[] values = row.split(",");
         addRow(values);
     }
 
-    public void addRow(String[] data) {
+    public void addRow(String[] data) { // adds a new row 
         database[0].add(getStringID(largestID + 1));
         for (int i = 1; i < database.length; i++) {
             database[i].add(data[i - 1]); // Add Data
@@ -65,14 +64,14 @@ public class Database {
         largestID++;
     }
 
-    public void updateRow(int id, String[] data) {
+    public void updateRow(int id, String[] data) { // updates a specific row with new data
         database[0].set(id, getStringID(id));
         for (int i = 1; i < database.length; i++) {
             database[i].set(id, data[i - 1]);
         }
     }
 
-    public String[] getRow(int id) {
+    public String[] getRow(int id) { // 
         String[] out = new String[database.length];
         for (int i = 0; i < database.length; i++) {
             out[i] = database[i].get(id);
@@ -80,7 +79,7 @@ public class Database {
         return out;
     }
 
-    public String getRowString(int id) {
+    public String getRowString(int id) { // the returns row number 
         String out = "";
         String[] arr = getRow(id);
         for (int i = 0; i < database.length; i++) {
@@ -92,7 +91,7 @@ public class Database {
         return out;
     }
 
-    public String getStringID(int id) {
+    public String getStringID(int id) { // Returns the id number as a string with 5 digits
         String output = "";
 
         String out = "" + id;
