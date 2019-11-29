@@ -20,8 +20,7 @@ public class ViewFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	static JButton buttonBack = new JButton("Back");
 	static ArrayList<String> dataAll;
-	static String[] data = new String[] { "ID", "Name", "Age", "Period 1", "Period 2", "Period 3", "Period 4",
-			"Period 5" };
+	static String[] data;
 	public static Container c = new Container();
 	public static JPanel panelInfo = new JPanel();
 	static JPanel tempP = new JPanel();
@@ -39,6 +38,8 @@ public class ViewFrame extends JFrame {
 		JScrollPane sTextArea;
 		c = new Container();
 		c = getContentPane();
+		data = new String[] { "ID", "Name", "Age", "Period 1", "Period 2", "Period 3", "Period 4",
+		"Period 5" };
 		try {
 			FileReader viewR = new FileReader("Database");
 			BufferedReader viewFile = new BufferedReader(viewR);
