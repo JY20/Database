@@ -22,16 +22,16 @@ public class ViewFrame extends JFrame {
 	static JButton buttonBack = new JButton("Back");// The back button
 	static ArrayList<String> dataAll;// All the data from the text file
 	static String[] data; // The 
-	public static Container c = new Container();
+	public static Container c = new Container(); // The container for the view frame 
 	public static JPanel panelInfo = new JPanel(); // Panel for the data or information 
 
 	public ViewFrame(String title) {
 		super(title);
-		c = getContentPane();
+		c = getContentPane(); // Set the container to the frame content frame
 	}
 
-	public void refresh() {
-		panelInfo = new JPanel();
+	public void refresh() { 
+		panelInfo = new JPanel(); // Set all the variables to blank
 		buttonBack = new JButton("Back");
 		dataAll = new ArrayList<>();
 		JLabel[][] dataL;
@@ -40,7 +40,7 @@ public class ViewFrame extends JFrame {
 		c = getContentPane();
 		data = new String[] { "ID", "Name", "Age", "Period 1", "Period 2", "Period 3", "Period 4",
 		"Period 5" };
-		try {
+		try {// Takes the data from the database to store it in the dataAll
 			FileReader viewR = new FileReader("Database");
 			BufferedReader viewFile = new BufferedReader(viewR);
 			String temps = viewFile.readLine();
@@ -50,7 +50,7 @@ public class ViewFrame extends JFrame {
 			}
 			viewR.close();
 		} catch (IOException io) {
-		}
+		}// Set the 
 		dataL = new JLabel[dataAll.size() + 1][8];
 		GridLayout viewgrid = new GridLayout(dataAll.size() + 2, 8, 1, 1);
 		panelInfo.setLayout(viewgrid);
