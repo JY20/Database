@@ -38,7 +38,7 @@ public class MainFrame extends JFrame {
         c.add(buttonAdd);
         buttonView.setFont(buttonView.getFont().deriveFont(35.0f));
         c.add(buttonView);
-        // Add Behaviour
+        // Add Behavior
         buttonUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,10 +46,10 @@ public class MainFrame extends JFrame {
                 int inputIDInt = 0;
 
                 try {
-                    // Open a input dialog and store the ID inputted to 'option'.
+                    // Open a input dialog and store the ID inputed to 'option'.
                     inputID = JOptionPane.showInputDialog(null, "Enter your ID");
 
-                    try {
+                    try { //Check if the id is valid 
                         if (inputID.contains("/[a-zA-Z]/")) {
                             throw new Exception();
                         }
@@ -66,7 +66,7 @@ public class MainFrame extends JFrame {
                     // The user pressed the cancel button
                 }
 
-                if (inputIDInt <= DatabaseGUI.database.largestID && inputIDInt > 0) {
+                if (inputIDInt <= DatabaseGUI.database.largestID && inputIDInt > 0) { // If the id is valid then open the update frame
                     DatabaseGUI.frame.setVisible(false);
                     updateFrame.updateLabels(inputIDInt);
                     updateFrame.setSize(600, 500);
@@ -77,7 +77,7 @@ public class MainFrame extends JFrame {
             }
         });
 
-        buttonAdd.addActionListener(new ActionListener() {
+        buttonAdd.addActionListener(new ActionListener() { // Add frame button is pressed opens the add frame 
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,7 +89,7 @@ public class MainFrame extends JFrame {
             }
         });
 
-        buttonView.addActionListener(new ActionListener() {
+        buttonView.addActionListener(new ActionListener() { // View frame button is pressed opens the view frame 
 
             @Override
             public void actionPerformed(ActionEvent e) {
