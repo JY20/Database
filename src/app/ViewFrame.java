@@ -50,11 +50,11 @@ public class ViewFrame extends JFrame {
 			}
 			viewR.close();
 		} catch (IOException io) {
-		}// Set the 
+		}// Set the grid layout
 		dataL = new JLabel[dataAll.size() + 1][8];
 		GridLayout viewgrid = new GridLayout(dataAll.size() + 2, 8, 1, 1);
 		panelInfo.setLayout(viewgrid);
-
+		//Add the information to grid layout  
 		for (int i = 0; i < dataAll.size(); i++) {
 			if (i == 0) {
 			} else {
@@ -67,14 +67,14 @@ public class ViewFrame extends JFrame {
 				panelInfo.add(dataL[i][j]);
 			}
 		}
-
+		// Add the scroll bar and the back button to the panel
 		sTextArea = new JScrollPane(panelInfo);
 		sTextArea.setCorner(JScrollPane.UPPER_RIGHT_CORNER, buttonBack);
 		sTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		sTextArea.setColumnHeaderView(buttonBack);
 		c.add(sTextArea);
 
-		buttonBack.addActionListener(new ActionListener() {
+		buttonBack.addActionListener(new ActionListener() {// when the button is pressed close view frame and open the main frame
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainFrame.viewFrame.setVisible(false);
