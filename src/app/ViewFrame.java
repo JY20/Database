@@ -38,8 +38,8 @@ public class ViewFrame extends JFrame {
 		JScrollPane sTextArea;
 		c = new Container();
 		c = getContentPane();
-		data = new String[] { "ID", "Name", "Age", "Period 1", "Period 2", "Period 3", "Period 4",
-		"Period 5" };
+		data = new String[] { "ID", "Name", "Age", "Period 1 Class", "Period 1 Teacher", "Period 2 Class", "Period 2 Teacher", "Period 3 Class", "Period 3 Teacher", "Period 4 Class",
+				"Period 4 Teacher", "Period 5 Class", "Period 5 Teacher" };
 		try {// Takes the data from the database to store it in the dataAll
 			FileReader viewR = new FileReader("Database");
 			BufferedReader viewFile = new BufferedReader(viewR);
@@ -51,18 +51,17 @@ public class ViewFrame extends JFrame {
 			viewR.close();
 		} catch (IOException io) {
 		}// Set the grid layout
-		dataL = new JLabel[dataAll.size() + 1][8];
-		GridLayout viewgrid = new GridLayout(dataAll.size() + 2, 8, 1, 1);
+		dataL = new JLabel[dataAll.size() + 1][13];
+		GridLayout viewgrid = new GridLayout(dataAll.size() + 2, 13, 1, 1);
 		panelInfo.setLayout(viewgrid);
 		//Add the information to grid layout  
 		for (int i = 0; i < dataAll.size(); i++) {
 			if (i == 0) {
 			} else {
-				data = dataAll.get(i - 1).split(",", 9);
+				data = dataAll.get(i - 1).split(",", 13);
 			}
-			for (int j = 0; j < 8; j++) {
+			for (int j = 0; j < 12; j++) {
 				dataL[i][j] = new JLabel(data[j], SwingConstants.CENTER);
-
 				dataL[i][j].setFont(dataL[i][j].getFont().deriveFont(15.0f));
 				panelInfo.add(dataL[i][j]);
 			}
