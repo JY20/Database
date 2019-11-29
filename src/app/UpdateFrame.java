@@ -1,5 +1,6 @@
 package app;
 
+//Import the libraries
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -14,14 +15,14 @@ public class UpdateFrame extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    static String[] originalData = new String[] { "", "", "", "", "", "", "" }; // Each seperate value in old row
-    static JLabel[] originalLabels = new JLabel[7];
-    static JTextField[] inputs = new JTextField[7];
+    static String[] originalData = new String[] { "", "", "", "", "", "", "" }; // Each separate value in old row
+    static JLabel[] originalLabels = new JLabel[7]; // Labels use to show the original data on the panel
+    static JTextField[] inputs = new JTextField[7]; // The new info the user want to change it to 
 
-    static FileWriter fw;
-    static FileReader fr;
-    static BufferedWriter Bw;
-    static BufferedReader Br;
+    static FileWriter fw; //Declare the file writer
+    static FileReader fr;//Declare the file reader
+    static BufferedWriter Bw; //Declare the buffered writer
+    static BufferedReader Br;// Declare the buffered reader
 
     public UpdateFrame(String title) {
         super(title);

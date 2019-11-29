@@ -21,7 +21,7 @@ public class ViewFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	static JButton buttonBack = new JButton("Back");// The back button
 	static ArrayList<String> dataAll;// All the data from the text file
-	static String[] data; // The 
+	static String[] data; // The separate parts of the information line 
 	public static Container c = new Container(); // The container for the view frame 
 	public static JPanel panelInfo = new JPanel(); // Panel for the data or information 
 
