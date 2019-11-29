@@ -34,12 +34,4 @@ public class DatabaseGUI {
             }
         });
     }
-
-    public static void say(String x) {
-        System.out.println(x);
-    }
-
-    public static void say(int x) {
-        System.out.println(x);
-    }
 }
