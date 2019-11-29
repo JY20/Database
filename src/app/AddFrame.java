@@ -28,7 +28,7 @@ public class AddFrame extends JFrame {
     public AddFrame(String title) {
         super(title);
         // Set Layout manager
-        GridLayout grid = new GridLayout(8, 2, 30, 10);
+        GridLayout grid = new GridLayout(8, 2, 30, 10); // create a grid to organize components
         setLayout(grid);
 
         // Create swing components
@@ -80,6 +80,7 @@ public class AddFrame extends JFrame {
         buttonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // When back button is pressed, show MainFrame and hide addFrame
                 MainFrame.addFrame.setVisible(false);
                 DatabaseGUI.frame.setVisible(true);
             }
@@ -93,12 +94,14 @@ public class AddFrame extends JFrame {
         Bw = new BufferedWriter(fw);
 
         String output = "";
+        // calculate id number
         ID = id(Br);
+        // add the id to the front of the text. (also formats to 5 digits)
         output += String.format("%0" + idSize + "d", (ID + 1)) + ",";
         for (int i = 0; i < input.length; i++) {
-            output += input[i] + ",";
+            output += input[i] + ","; // add all other elements with commas to seperate
         }
-        Bw.write(output + "\n");
+        Bw.write(output + "\n"); // create a newline for the next time a line is added
         if (Bw != null) {
             Bw.close();
         }
