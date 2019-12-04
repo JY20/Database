@@ -52,15 +52,16 @@ public class ViewFrame extends JFrame {
 		} catch (IOException io) {
 		}// Set the grid layout
 		dataL = new JLabel[dataAll.size() + 1][13];
-		GridLayout viewgrid = new GridLayout(dataAll.size() + 2, 13, 1, 1);
+		GridLayout viewgrid = new GridLayout(dataAll.size() + 2, 13, 2, 1);
 		panelInfo.setLayout(viewgrid);
 		//Add the information to grid layout  
 		for (int i = 0; i < dataAll.size(); i++) {
 			if (i == 0) {
 			} else {
-				data = dataAll.get(i - 1).split(",", 13);
+				data = dataAll.get(i - 1).split(",", 14);
 			}
-			for (int j = 0; j < 12; j++) {
+			for (int j = 0; j < 13; j++) {
+				System.out.println(data.length);
 				dataL[i][j] = new JLabel(data[j], SwingConstants.CENTER);
 				dataL[i][j].setFont(dataL[i][j].getFont().deriveFont(15.0f));
 				panelInfo.add(dataL[i][j]);
