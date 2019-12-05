@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
         JButton buttonUpdate = new JButton("Update Data");
         JButton buttonAdd = new JButton("Add Data");
         JButton buttonView = new JButton("View Data");
-        JButton buttonDelete = new JButton("Delete Entry");
+        JButton buttonDelete = new JButton("Delete Data");
 
         // Add swing components to content pane
         Container c = getContentPane();
