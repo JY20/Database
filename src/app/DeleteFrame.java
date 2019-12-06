@@ -115,11 +115,14 @@ public class DeleteFrame  extends JFrame {
         	int tempInt = Integer.parseInt(temps);
         	if (tempInt == id) {
         		temps = Integer.toString(id);
-        		for(int k =  0;  k <= 5; k ++) {
+        		int digits = 5-temps.length();
+        		for(int k =  0;  k < digits; k ++) {
         			temps = "0"+ temps;
         		}
-        		System.out.println(temps);
-        		data.set(i, temps + "*");
+        		for(int k =  0;  k < 12; k ++) {
+        			temps = temps + ",*";
+        		}
+        		data.set(i, temps + ",");
         		i = data.size();
         		return true;
         	}
