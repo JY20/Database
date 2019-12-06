@@ -101,7 +101,7 @@ public class AddFrame extends JFrame {
         for (int i = 0; i < input.length; i++) {
             output += input[i] + ","; // add all other elements with commas to separate
         }
-        Bw.write(output + "\n"); // create a newline for the next time a line is added
+        Bw.write("\n" + output ); // create a newline for the next time a line is added
         if (Bw != null) {
             Bw.close();
         }

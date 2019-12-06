@@ -130,14 +130,12 @@ public class UpdateFrame extends JFrame {
 
                     inputBuffer.append(line);
                     inputBuffer.append('\n');
-                    System.out.println(line);
                     counter++;
                 } else {
                     line = DatabaseGUI.database.getRowString(counter) + ","; // replace the line here
 
                     inputBuffer.append(line);
                     inputBuffer.append('\n');
-                    System.out.println(line);
                     counter++;
                 }
             }

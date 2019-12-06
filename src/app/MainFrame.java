@@ -111,6 +111,7 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DatabaseGUI.frame.setVisible(false);
+                deleteFrame = new DeleteFrame("Delete Frame");
                 deleteFrame.setSize(600, 500);
                 deleteFrame.setLocationRelativeTo(null);
                 deleteFrame.setVisible(true);
