@@ -1,5 +1,6 @@
 package app;
 
+//Import the libraries
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -14,36 +15,36 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class DeleteFrame  extends JFrame {
 	private static final long serialVersionUID = 1L;
-	public static int ylength = 500;
-	public static ArrayList<String> data = new ArrayList <>();
+	public static int ylength = 500; // The length of the frame
+	public static ArrayList<String> data = new ArrayList <>(); // The data from the database
 	
 	public DeleteFrame(String title) {
 		super(title);
+	
+		JButton buttonDelete = new JButton("Delete"); //Button to delete the data
+		JButton buttonBack = new JButton("Back");// Button to go back to the main frame
+		JTextField text = new JTextField ("Inputs Here"); // The area where the user enter the id 
+		text.setFont(new Font (Font.DIALOG,Font.BOLD,15) );//Change the font
+		Container c = getContentPane();// Declare the container
+		JPanel Bpanel = new JPanel ();// The panel for the buttons and text box
 		
-		
-		JButton buttonDelete = new JButton("Delete");
-		JButton buttonBack = new JButton("Back");
-		JTextField text = new JTextField ("Inputs Here");
-		text.setFont(new Font (Font.DIALOG,Font.BOLD,15) );
-		Container c = getContentPane();
-		JPanel Bpanel = new JPanel ();
-		
-		Bpanel.setLayout(new GridBagLayout());
+		Bpanel.setLayout(new GridBagLayout()); //Using bag grid layout to make different grid size
 		GridBagConstraints overall  = new GridBagConstraints();
 		
-		overall .fill = GridBagConstraints.HORIZONTAL;
+		overall .fill = GridBagConstraints.HORIZONTAL; // Add the back button
 		overall.weightx = 0.5;
 		overall .ipady = (int) (ylength*0.3);  
 		overall .gridx = 0;
 		overall .gridy = 0;
 		Bpanel.add(buttonBack, overall);
 
-		overall .fill = GridBagConstraints.HORIZONTAL;
+		overall .fill = GridBagConstraints.HORIZONTAL; // Add the delete button
 		overall .weightx = 0.5;
 		overall .ipady = (int) (ylength*0.3);  
 		overall .gridx = 1;
@@ -76,16 +77,16 @@ public class DeleteFrame  extends JFrame {
 					String input = text.getText();
 					read();
 					if (input.length() <= 5 ) {
-						int tempInt = Integer.parseInt(input);
-						if (search(tempInt) == true) {
-							write();
-							MainFrame.deleteFrame.setVisible(false);
-							DatabaseGUI.frame.setVisible(true);
-						} else {
+						try {
+							int tempInt = Integer.parseInt(input);
+							if (search(tempInt) == true) {
+								write();
+								MainFrame.deleteFrame.setVisible(false);
+								DatabaseGUI.frame.setVisible(true);
+							} 
+						} catch(Exception E) {
 							text.setText("Input not vaild please try again");
 						}
-					}else {
-						text.setText("Input not vaild please try again");
 					}
 				} catch (IOException E) {
 					System.out.println("**************");
@@ -113,7 +114,12 @@ public class DeleteFrame  extends JFrame {
         	temps = data.get(i).substring(0, 5);
         	int tempInt = Integer.parseInt(temps);
         	if (tempInt == id) {
-        		data.remove(i);
+        		temps = Integer.toString(id);
+        		for(int k =  0;  k <= 5; k ++) {
+        			temps = "0"+ temps;
+        		}
+        		System.out.println(temps);
+        		data.set(i, temps + "*");
         		i = data.size();
         		return true;
         	}
