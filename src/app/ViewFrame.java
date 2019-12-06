@@ -55,13 +55,12 @@ public class ViewFrame extends JFrame {
 		GridLayout viewgrid = new GridLayout(dataAll.size() + 2, 13, 2, 1);
 		panelInfo.setLayout(viewgrid);
 		//Add the information to grid layout  
-		for (int i = 0; i < dataAll.size(); i++) {
+		for (int i = 0; i < (dataAll.size()+1); i++) {
 			if (i == 0) {
 			} else {
 				data = dataAll.get(i - 1).split(",", 14);
 			}
 			for (int j = 0; j < 13; j++) {
-				System.out.println(data.length);
 				dataL[i][j] = new JLabel(data[j], SwingConstants.CENTER);
 				dataL[i][j].setFont(dataL[i][j].getFont().deriveFont(15.0f));
 				panelInfo.add(dataL[i][j]);

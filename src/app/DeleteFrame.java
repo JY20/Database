@@ -4,7 +4,6 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -13,7 +12,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -30,7 +28,7 @@ public class DeleteFrame  extends JFrame {
 		
 		JButton buttonDelete = new JButton("Delete");
 		JButton buttonBack = new JButton("Back");
-		JTextField text = new JTextField ("sssss");
+		JTextField text = new JTextField ("Inputs Here");
 		text.setFont(new Font (Font.DIALOG,Font.BOLD,15) );
 		Container c = getContentPane();
 		JPanel Bpanel = new JPanel ();
@@ -62,7 +60,7 @@ public class DeleteFrame  extends JFrame {
 		
 		c.add(Bpanel);
 		
-		buttonBack.addActionListener(new ActionListener() {// when the button is pressed close view frame and open the main frame
+		buttonBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainFrame.deleteFrame.setVisible(false);
@@ -70,15 +68,16 @@ public class DeleteFrame  extends JFrame {
 			}
 		});
 		
-		buttonDelete.addActionListener(new ActionListener() {// when the button is pressed close view frame and open the main frame
+		buttonDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
 					String input = text.getText();
 					read();
-					if (input.matches("[0-9]") && input.length() <= 5 ) {
-						if (search(Integer.parseInt(input)) == true) {
+					if (input.length() <= 5 ) {
+						int tempInt = Integer.parseInt(input);
+						if (search(tempInt) == true) {
 							write();
 							MainFrame.deleteFrame.setVisible(false);
 							DatabaseGUI.frame.setVisible(true);
