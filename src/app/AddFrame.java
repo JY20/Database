@@ -13,8 +13,9 @@ public class AddFrame extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    static String[] input = new String[] { "", "", "", "", "", "", "" }; // new information
-    static JTextField[] inputs = new JTextField[DatabaseGUI.questions.length - 1]; 
+    // static String[] input = new String[] { "", "", "", "", "", "", "","" }; //
+    // new information
+    static JTextField[] inputs = new JTextField[DatabaseGUI.questions.length - 1];
 
     static int ID = 0; // The id for the information
     static int idSize = 5; // The size of the id which the number of digits in the id
@@ -28,7 +29,7 @@ public class AddFrame extends JFrame {
     public AddFrame(String title) {
         super(title);
         // Set Layout manager
-        GridLayout grid = new GridLayout(8, 2, 30, 10); // create a grid to organize components
+        GridLayout grid = new GridLayout(inputs.length + 1, 2, 30, 10); // create a grid to organize components
         setLayout(grid);
 
         // Create swing components
@@ -44,7 +45,7 @@ public class AddFrame extends JFrame {
         // Add swing components to content pane
         Container c = getContentPane();
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 14; i++) {
             c.add(labels[i]);
             c.add(inputs[i]);
         }
@@ -97,17 +98,18 @@ public class AddFrame extends JFrame {
         // calculate id number
         ID = id(Br);
         // add the id to the front of the text. (also formats to 5 digits)
-        output += String.format("%0" + idSize + "d", (ID + 1)) + ","; // Assign id for the information by adding 1 to the largest id in the database
+        output += String.format("%0" + idSize + "d", (ID + 1)) + ","; // Assign id for the information by adding 1 to
+                                                                      // the largest id in the database
         for (int i = 0; i < input.length; i++) {
             output += input[i] + ","; // add all other elements with commas to separate
         }
-        Bw.write("\n" + output ); // create a newline for the next time a line is added
+        Bw.write("\n" + output); // create a newline for the next time a line is added
         if (Bw != null) {
             Bw.close();
         }
     }
 
-    public static int id(BufferedReader x) throws IOException { // Look for the largest id 
+    public static int id(BufferedReader x) throws IOException { // Look for the largest id
         String TS = x.readLine();
         String PS = "";
         int id = 0;

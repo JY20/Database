@@ -14,22 +14,26 @@ import java.io.FileOutputStream;
 public class UpdateFrame extends JFrame {
 
     private static final long serialVersionUID = 1L;
+    static int size = DatabaseGUI.newInfo.length;
+    static String[] originalData = new String[size]; // Each separate value in old row
+    static JLabel[] originalLabels = new JLabel[size]; // Labels use to show the original data on the panel
+    static JTextField[] inputs = new JTextField[size]; // The new info the user want to change it to
 
-    static String[] originalData = new String[] { "", "", "", "", "", "", "" }; // Each separate value in old row
-    static JLabel[] originalLabels = new JLabel[7]; // Labels use to show the original data on the panel
-    static JTextField[] inputs = new JTextField[7]; // The new info the user want to change it to 
-
-    static FileWriter fw; //Declare the file writer
-    static FileReader fr;//Declare the file reader
-    static BufferedWriter Bw; //Declare the buffered writer
+    static FileWriter fw; // Declare the file writer
+    static FileReader fr;// Declare the file reader
+    static BufferedWriter Bw; // Declare the buffered writer
     static BufferedReader Br;// Declare the buffered reader
 
     public UpdateFrame(String title) {
         super(title);
 
+        for (int i = 0; i < originalData.length; i++) {
+            originalData[i] = "";
+        }
+
         // Set Layout manager
 
-        GridLayout grid = new GridLayout(9, 3, 30, 10);
+        GridLayout grid = new GridLayout(size + 2, 3, 30, 10);
         setLayout(grid);
 
         // Create swing components
@@ -39,9 +43,9 @@ public class UpdateFrame extends JFrame {
         JLabel[] titleLabels = new JLabel[] { new JLabel(""), new JLabel("Original Info", SwingConstants.CENTER),
                 new JLabel("New Info", SwingConstants.CENTER) };
 
-        JLabel[] labels = new JLabel[7];
+        JLabel[] labels = new JLabel[size];
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < size; i++) {
             labels[i] = new JLabel(DatabaseGUI.questions[i + 1], SwingConstants.CENTER);
             originalLabels[i] = new JLabel(originalData[i], SwingConstants.CENTER);
             inputs[i] = new JTextField();
@@ -54,7 +58,7 @@ public class UpdateFrame extends JFrame {
             c.add(titleLabels[i]);
         }
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < size; i++) {
             c.add(labels[i]);
             c.add(originalLabels[i]);
             c.add(inputs[i]);
@@ -69,7 +73,7 @@ public class UpdateFrame extends JFrame {
 
                 try {
                     for (int i = 0; i < DatabaseGUI.newInfo.length; i++) {
-                        if (inputs[i].getText().contains(",") || inputs[i].getText().equals("")) {
+                        if (inputs[i].getText().contains(",")) {
                             throw new IllegalArgumentException();
                         }
                         DatabaseGUI.newInfo[i] = inputs[i].getText();
