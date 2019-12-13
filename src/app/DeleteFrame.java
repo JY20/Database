@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -29,7 +28,7 @@ public class DeleteFrame extends JFrame {
 		super(title);
 
 		for (int i = 0; i < emptyData.length; i++) {
-			emptyData[i] = "*";
+			emptyData[i] = " ";
 		}
 
 		JButton buttonDelete = new JButton("Delete"); // Button to delete the data
@@ -127,7 +126,7 @@ public class DeleteFrame extends JFrame {
 					temps = "0" + temps;
 				}
 				for (int k = 0; k < 12; k++) {
-					temps = temps + ",*";
+					temps = temps + ", ";
 				}
 				data.set(i, temps + ",");
 				i = data.size();
