@@ -29,7 +29,7 @@ public class DeleteFrame  extends JFrame {
 	
 		JButton buttonDelete = new JButton("Delete"); //Button to delete the data
 		JButton buttonBack = new JButton("Back");// Button to go back to the main frame
-		JTextField text = new JTextField ("Inputs Here"); // The area where the user enter the id 
+		JTextField text = new JTextField ("ID"); // The area where the user enter the id 
 		text.setFont(new Font (Font.DIALOG,Font.BOLD,15) );//Change the font
 		Container c = getContentPane();// Declare the container
 		JPanel Bpanel = new JPanel ();// The panel for the buttons and text box
@@ -51,7 +51,7 @@ public class DeleteFrame  extends JFrame {
 		overall .gridy = 0;
 		Bpanel.add(buttonDelete, overall );
 
-		overall .fill = GridBagConstraints.HORIZONTAL;
+		overall .fill = GridBagConstraints.HORIZONTAL; // Add the text box  
 		overall .ipady = (int) (ylength*0.7);
 		overall .weightx = 0.0;
 		overall .gridwidth = 2;
@@ -59,9 +59,9 @@ public class DeleteFrame  extends JFrame {
 		overall .gridy = 1;
 		Bpanel.add(text, overall);
 		
-		c.add(Bpanel);
+		c.add(Bpanel); // Add all the components to the frame
 		
-		buttonBack.addActionListener(new ActionListener() {
+		buttonBack.addActionListener(new ActionListener() { // When back button is pressed it returns to main frame
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainFrame.deleteFrame.setVisible(false);
@@ -69,7 +69,7 @@ public class DeleteFrame  extends JFrame {
 			}
 		});
 		
-		buttonDelete.addActionListener(new ActionListener() {
+		buttonDelete.addActionListener(new ActionListener() { // When delete button is pressed it deletes the data
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
@@ -96,7 +96,7 @@ public class DeleteFrame  extends JFrame {
 		
 	}
 	
-	public static void read () throws IOException {
+	public static void read () throws IOException { // Read all the data from the file
         FileReader fr = new FileReader("Database");
 		BufferedReader BrDF = new BufferedReader(fr);
 		data = new ArrayList <>();
@@ -108,7 +108,7 @@ public class DeleteFrame  extends JFrame {
         BrDF.close();
 	}
 	
-	public static boolean search (int id) {
+	public static boolean search (int id) { // Search through the data to make sure the user inputs in a valid id
 		String temps;
         for(int i = 0; i < data.size(); i++) {
         	temps = data.get(i).substring(0, 5);
@@ -130,7 +130,7 @@ public class DeleteFrame  extends JFrame {
         return false;
 	}
 	
-	public static void write () throws IOException {
+	public static void write () throws IOException { // Rewrite the the new data with the delete data
         FileWriter fw = new FileWriter("Database", false);
         BufferedWriter BwDF = new BufferedWriter(fw);
         for(int i = 0; i < data.size(); i++) {

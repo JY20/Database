@@ -24,7 +24,8 @@ public class ViewFrame extends JFrame {
 	static String[] data; // The separate parts of the information line 
 	public static Container c = new Container(); // The container for the view frame 
 	public static JPanel panelInfo = new JPanel(); // Panel for the data or information 
-
+	public static int size = DatabaseGUI.newInfo.length+1;
+	
 	public ViewFrame(String title) {
 		super(title);
 		c = getContentPane(); // Set the container to the frame content frame
@@ -51,16 +52,16 @@ public class ViewFrame extends JFrame {
 			viewR.close();
 		} catch (IOException io) {
 		}// Set the grid layout
-		dataL = new JLabel[dataAll.size() + 1][13];
-		GridLayout viewgrid = new GridLayout(dataAll.size() + 2, 13, 2, 1);
+		dataL = new JLabel[dataAll.size() + 1][size];
+		GridLayout viewgrid = new GridLayout(dataAll.size() + 1, size, 1, 0);
 		panelInfo.setLayout(viewgrid);
 		//Add the information to grid layout  
 		for (int i = 0; i < (dataAll.size()+1); i++) {
 			if (i == 0) {
 			} else {
-				data = dataAll.get(i - 1).split(",", 14);
+				data = dataAll.get(i - 1).split(",", size +1 );
 			}
-			for (int j = 0; j < 13; j++) {
+			for (int j = 0; j < size; j++) {
 				dataL[i][j] = new JLabel(data[j], SwingConstants.CENTER);
 				dataL[i][j].setFont(dataL[i][j].getFont().deriveFont(15.0f));
 				panelInfo.add(dataL[i][j]);
