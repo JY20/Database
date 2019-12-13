@@ -13,11 +13,11 @@ public class DatabaseGUI {
 
     static ArrayList<String> OtherLines = new ArrayList<String>(); // All other lines
     // new information
-    static String[] newInfo = new String[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+    static String[] newInfo = new String[] { "", "", "", "", "", "", "", "", "", "", "", "" };
 
     public static String[] questions = new String[] { "ID", "Name", "Age", "Period 1 Class", "Period 1 Teacher",
             "Period 2 Class", "Period 2 Teacher", "Period 3 Class", "Period 3 Teacher", "Period 4 Class",
-            "Period 4 Teacher", "Period 5 Class", "Period 5 Teacher", "Period 6 Class", "Period 6 Teacher" }; // questions
+            "Period 4 Teacher", "Period 5 Class", "Period 5 Teacher" }; // questions
 
     static Database database = new Database(questions); // Creates a database object with the questions as columns
 

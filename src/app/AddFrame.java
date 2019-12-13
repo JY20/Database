@@ -45,7 +45,7 @@ public class AddFrame extends JFrame {
         // Add swing components to content pane
         Container c = getContentPane();
 
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < DatabaseGUI.questions.length - 1; i++) {
             c.add(labels[i]);
             c.add(inputs[i]);
         }
