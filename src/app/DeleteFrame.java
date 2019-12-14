@@ -41,21 +41,21 @@ public class DeleteFrame extends JFrame {
 		Bpanel.setLayout(new GridBagLayout()); // Using bag grid layout to make different grid size
 		GridBagConstraints overall = new GridBagConstraints();
 
-		overall.fill = GridBagConstraints.HORIZONTAL; // Add the back button
+		overall.fill = GridBagConstraints.HORIZONTAL; // Add the back button to the bag grid layout
 		overall.weightx = 0.5;
 		overall.ipady = (int) (ylength * 0.3);
 		overall.gridx = 0;
 		overall.gridy = 0;
 		Bpanel.add(buttonBack, overall);
 
-		overall.fill = GridBagConstraints.HORIZONTAL; // Add the delete button
+		overall.fill = GridBagConstraints.HORIZONTAL; // Add the delete button to the bag grid layout
 		overall.weightx = 0.5;
 		overall.ipady = (int) (ylength * 0.3);
 		overall.gridx = 1;
 		overall.gridy = 0;
 		Bpanel.add(buttonDelete, overall);
 
-		overall.fill = GridBagConstraints.HORIZONTAL; // Add the text box
+		overall.fill = GridBagConstraints.HORIZONTAL; // Add the text box to the bag grid layout
 		overall.ipady = (int) (ylength * 0.7);
 		overall.weightx = 0.0;
 		overall.gridwidth = 2;
@@ -87,10 +87,15 @@ public class DeleteFrame extends JFrame {
 								write();
 								MainFrame.deleteFrame.setVisible(false);
 								DatabaseGUI.frame.setVisible(true);
+							} else {
+								
+								text.setText("Input not vaild please try again");;
 							}
 						} catch (Exception E) {
 							text.setText("Input not vaild please try again");
 						}
+					} else {
+						text.setText("Input not vaild please try again");
 					}
 				} catch (IOException E) {
 					System.out.println("**************");
@@ -137,7 +142,7 @@ public class DeleteFrame extends JFrame {
 		return false;
 	}
 
-	public static void write() throws IOException { // Rewrite the the new data with the delete data
+	public static void write() throws IOException { // Rewrite the the new data with the delete/changed line
 		FileWriter fw = new FileWriter("Database", false);
 		BufferedWriter BwDF = new BufferedWriter(fw);
 		for (int i = 0; i < data.size(); i++) {
