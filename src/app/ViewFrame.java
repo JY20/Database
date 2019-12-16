@@ -24,7 +24,7 @@ public class ViewFrame extends JFrame {
 	static String[] data; // The separate parts of the information line 
 	public static Container c = new Container(); // The container for the view frame 
 	public static JPanel panelInfo = new JPanel(); // Panel for the data or information 
-	public static int size = DatabaseGUI.newInfo.length+1;
+	public static int size = DatabaseGUI.newInfo.length+1; // Size of the user info line
 	
 	public ViewFrame(String title) {
 		super(title);

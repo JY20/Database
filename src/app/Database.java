@@ -1,5 +1,6 @@
 package app;
 
+//import the libraries
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,12 +12,12 @@ public class Database {
     private ArrayList<String>[] database; // uses an array of arraylist to hold database values
 
     String[] columnTitles;
-    int largestID = 0;
-    int lastID = 0;
+    int largestID = 0; // The largest id 
+    int lastID = 0; // The id of the last line
 
     public Database(String[] _columnTitles) {
         columnTitles = _columnTitles;
-        database = new ArrayList[columnTitles.length];
+        database = new ArrayList[columnTitles.length]; 
     }
 
     public void setup() throws IOException { // Initialize and set column titles to top

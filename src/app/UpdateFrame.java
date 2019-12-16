@@ -14,7 +14,7 @@ import java.io.FileOutputStream;
 public class UpdateFrame extends JFrame {
 
     private static final long serialVersionUID = 1L;
-    static int size = DatabaseGUI.newInfo.length;
+    static int size = DatabaseGUI.newInfo.length; // size of the grid or the size of line of user information
     static String[] originalData = new String[size]; // Each separate value in old row
     static JLabel[] originalLabels = new JLabel[size]; // Labels use to show the original data on the panel
     static JTextField[] inputs = new JTextField[size]; // The new info the user want to change it to

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class MainFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 
-    public static AddFrame addFrame = new AddFrame("Add Data");
+    public static AddFrame addFrame = new AddFrame("Add Data"); 
     public static UpdateFrame updateFrame = new UpdateFrame("Update Data");
     public static ViewFrame viewFrame = new ViewFrame("View Data");
     public static DeleteFrame deleteFrame = new DeleteFrame("Delete Data");
