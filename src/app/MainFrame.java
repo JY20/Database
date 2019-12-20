@@ -13,11 +13,12 @@ import javax.swing.JOptionPane;
 public class MainFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 
-    public static AddFrame addFrame = new AddFrame("Add Data"); 
+    // initialize all frames
+    public static AddFrame addFrame = new AddFrame("Add Data");
     public static UpdateFrame updateFrame = new UpdateFrame("Update Data");
     public static ViewFrame viewFrame = new ViewFrame("View Data");
     public static DeleteFrame deleteFrame = new DeleteFrame("Delete Data");
-    
+
     public MainFrame(String title) {
         super(title);
         // Set Layout manager
@@ -33,6 +34,7 @@ public class MainFrame extends JFrame {
         Container c = getContentPane();
         GridLayout buttonlayout = new GridLayout(4, 1, 10, 10);
         c.setLayout(buttonlayout);
+        // set button fonts
         buttonAdd.setFont(buttonView.getFont().deriveFont(35.0f));
         c.add(buttonAdd);
         buttonUpdate.setFont(buttonUpdate.getFont().deriveFont(35.0f));
@@ -53,7 +55,7 @@ public class MainFrame extends JFrame {
                     // Open a input dialog and store the ID inputed to 'option'.
                     inputID = JOptionPane.showInputDialog(null, "Enter your ID");
 
-                    try { //Check if the id is valid 
+                    try { // Check if the id is valid
                         if (inputID.contains("/[a-zA-Z]/")) {
                             throw new Exception();
                         }
@@ -70,7 +72,8 @@ public class MainFrame extends JFrame {
                     // The user pressed the cancel button
                 }
 
-                if (inputIDInt <= DatabaseGUI.database.largestID && inputIDInt > 0) { // If the id is valid then open the update frame
+                if (inputIDInt <= DatabaseGUI.database.largestID && inputIDInt > 0) { // If the id is valid then open
+                                                                                      // the update frame
                     DatabaseGUI.frame.setVisible(false);
                     updateFrame.updateLabels(inputIDInt);
                     updateFrame.setSize(600, 500);
@@ -81,7 +84,7 @@ public class MainFrame extends JFrame {
             }
         });
 
-        buttonAdd.addActionListener(new ActionListener() { // Add frame button is pressed opens the add frame 
+        buttonAdd.addActionListener(new ActionListener() { // Add frame button is pressed opens the add frame
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,7 +96,7 @@ public class MainFrame extends JFrame {
             }
         });
 
-        buttonView.addActionListener(new ActionListener() { // View frame button is pressed opens the view frame 
+        buttonView.addActionListener(new ActionListener() { // View frame button is pressed opens the view frame
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,8 +108,8 @@ public class MainFrame extends JFrame {
                 viewFrame.refresh();
             }
         });
-        
-        buttonDelete.addActionListener(new ActionListener() { // View frame button is pressed opens the view frame 
+
+        buttonDelete.addActionListener(new ActionListener() { // View frame button is pressed opens the view frame
 
             @Override
             public void actionPerformed(ActionEvent e) {

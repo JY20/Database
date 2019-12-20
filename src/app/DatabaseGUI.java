@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 public class DatabaseGUI {
 
     static ArrayList<String> OtherLines = new ArrayList<String>(); // All other lines
+   
     // new information
     static String[] newInfo = new String[] { "", "", "", "", "", "", "", "", "", "", "", "" };
 

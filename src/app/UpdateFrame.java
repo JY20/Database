@@ -102,15 +102,7 @@ public class UpdateFrame extends JFrame {
         });
     }
 
-    public void setInfo(int row, String[] input) throws IOException {
-        fr = new FileReader("Database");
-        Br = new BufferedReader(fr);
-        fw = new FileWriter("Database", true);
-        Bw = new BufferedWriter(fw);
-
-    }
-
-    public void updateLabels(int option) {
+    public void updateLabels(int option) { // updates all the labels with the current data
         originalData = DatabaseGUI.database.getRow(option);
 
         for (int i = 0; i < originalLabels.length; i++) {
@@ -119,7 +111,7 @@ public class UpdateFrame extends JFrame {
         }
     }
 
-    // getStringID / getRowString
+    // replaces a line and writes to file
     public static void replaceLines(String ID, String replaced) {
         try {
             // input the (modified) file content to the StringBuffer "input"

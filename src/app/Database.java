@@ -12,12 +12,12 @@ public class Database {
     private ArrayList<String>[] database; // uses an array of arraylist to hold database values
 
     String[] columnTitles;
-    int largestID = 0; // The largest id 
+    int largestID = 0; // The largest id
     int lastID = 0; // The id of the last line
 
-    public Database(String[] _columnTitles) {
+    public Database(String[] _columnTitles) { // Constructor that takes in all the columns as a parameter
         columnTitles = _columnTitles;
-        database = new ArrayList[columnTitles.length]; 
+        database = new ArrayList[columnTitles.length];
     }
 
     public void setup() throws IOException { // Initialize and set column titles to top
@@ -28,6 +28,7 @@ public class Database {
         initializeWithExistingData();
     }
 
+    // setup function that reads the file to setup array of arraylists class
     public void initializeWithExistingData() throws IOException {
         BufferedReader reader = null;
 
@@ -57,7 +58,7 @@ public class Database {
         addRow(values);
     }
 
-    public void addRow(String[] data) { // adds a new row 
+    public void addRow(String[] data) { // adds a new row
         database[0].add(getStringID(largestID + 1));
         for (int i = 1; i < database.length; i++) {
             database[i].add(data[i - 1]); // Add Data
@@ -72,7 +73,7 @@ public class Database {
         }
     }
 
-    public String[] getRow(int id) { // 
+    public String[] getRow(int id) { // returns a string[] with all items in a row
         String[] out = new String[database.length];
         for (int i = 0; i < database.length; i++) {
             out[i] = database[i].get(id);
@@ -80,7 +81,7 @@ public class Database {
         return out;
     }
 
-    public String getRowString(int id) { // the returns row number 
+    public String getRowString(int id) { // the returns row number as a string (with the right number of digits)
         String out = "";
         String[] arr = getRow(id);
         for (int i = 0; i < database.length; i++) {

@@ -13,12 +13,11 @@ public class AddFrame extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    // static String[] input = new String[] { "", "", "", "", "", "", "","" }; //
-    // new information
+    // Stores new information
     static JTextField[] inputs = new JTextField[DatabaseGUI.questions.length - 1];
 
     static int ID = 0; // The id for the information
-    static int idSize = 5; // The size of the id which the number of digits in the id
+    static int idSize = 5; // The number of digits in the id
 
     // File Reading and writing
     static FileWriter fw;
